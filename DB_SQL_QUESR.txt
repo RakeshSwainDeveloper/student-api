@@ -1,0 +1,145 @@
+CREATE DATABASE studentcentraldb
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'English_India.1252'
+    LC_CTYPE = 'English_India.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+------------------------------
+
+CREATE DATABASE studentrecord
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'English_India.1252'
+    LC_CTYPE = 'English_India.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+------------------------------
+
+create schema core -> in studentcentraldb
+create schema studata -> in studentrecord
+----------------------------
+
+CREATE SEQUENCE core.user_entity_serial_no_seq START WITH 1 INCREMENT by 1
+
+CREATE TABLE core.user_entity(
+"uset_id" int4 NOT NULL DEFAULT NEXTVAL('core.user_entity_serial_no_seq'),
+"user_name" VARCHAR(255),
+"user_password" VARCHAR(255),
+"user_mobile_nu" 	VARCHAR(10),
+"is_active" BOOLEAN DEFAULT FALSE,
+"agency_id" VARCHAR(255),
+"role" VARCHAR(255),
+"user_email" VARCHAR(255),
+"created_time" TIMESTAMP(6),
+"block_status" VARCHAR(50),
+"block_time" TIMESTAMP(6)
+)
+---------------------------
+
+CREATE TABLE "studata"."state_student_records" (
+	"academic_year" VARCHAR COLLATE "pg_catalog"."default" NOT NULL,
+	"nsp_scheme_code" int4 NOT NULL,
+	"state_scheme_code" VARCHAR COLLATE "pg_catalog"."default" NOT NULL,
+	"state_application_id" VARCHAR COLLATE "pg_catalog"."default" NOT NULL,
+	"nsp_application_id" VARCHAR COLLATE "pg_catalog"."default" NOT NULL,
+	"otr_id" VARCHAR COLLATE "pg_catalog"."default",
+	"fresh_renewal" VARCHAR COLLATE "pg_catalog"."default",
+	"state_lgd_code" int4 NOT NULL,
+	"state_name" VARCHAR COLLATE "pg_catalog"."default",
+	"district_lgd_code" int4,
+	"district_name" VARCHAR COLLATE "pg_catalog"."default",
+	"applicant_name" VARCHAR COLLATE "pg_catalog"."default",
+	"date_of_birth" DATE,
+	"gender" VARCHAR COLLATE "pg_catalog"."default",
+	"father_name" VARCHAR COLLATE "pg_catalog"."default",
+	"mother_name" VARCHAR COLLATE "pg_catalog"."default",
+	"guardian_name" VARCHAR COLLATE "pg_catalog"."default",
+	"mobile_number" VARCHAR COLLATE "pg_catalog"."default",
+	"aadhaar_number" VARCHAR COLLATE "pg_catalog"."default",
+	"is_pwd" VARCHAR COLLATE "pg_catalog"."default",
+	"hosteller_or_dayscholar" VARCHAR COLLATE "pg_catalog"."default",
+	"type_of_institution_code" VARCHAR COLLATE "pg_catalog"."default",
+	"institution_code" VARCHAR COLLATE "pg_catalog"."default",
+	"institution_name" VARCHAR COLLATE "pg_catalog"."default",
+	"institution_state_lgd_code" int4,
+	"institution_state_name" VARCHAR COLLATE "pg_catalog"."default",
+	"institution_district_lgd_code" int4,
+	"institution_district_name" VARCHAR COLLATE "pg_catalog"."default",
+	"course_group" int4,
+	"course_level" int4,
+	"course_commencement_date" DATE,
+	"c_course_master_id" int4,
+	"course_name" VARCHAR COLLATE "pg_catalog"."default",
+	"type_of_course" int4,
+	"studying_class_year" int4,
+	"attendance_percentage" int4,
+	"non_refundable_fee_payable" NUMERIC,
+	"academic_allowance_payable" NUMERIC,
+	"disability_allowance_payable" NUMERIC,
+	"is_state_share_paid" VARCHAR COLLATE "pg_catalog"."default",
+	"state_non_refundable_fee_paid" NUMERIC,
+	"state_academic_allowance_paid" NUMERIC,
+	"state_disability_allowance_paid" NUMERIC,
+	"top_up_amount" NUMERIC,
+	"central_non_refundable_fee_payable" NUMERIC,
+	"central_academic_allowance_payable" NUMERIC,
+	"central_disability_allowance_payable" NUMERIC,
+	"created_time" TIMESTAMP ( 6 ) DEFAULT now( ),
+	"guardian_income" NUMERIC,
+	"guardian_occupation" VARCHAR COLLATE "pg_catalog"."default",
+	"aadhaar_authentication_method" int4,
+	"aadhaar_registration_mode" VARCHAR COLLATE "pg_catalog"."default",
+	"aadhaar_vault_ref_token" VARCHAR COLLATE "pg_catalog"."default",
+	"aadhaar_token_ref" VARCHAR COLLATE "pg_catalog"."default",
+	"transaction_id" VARCHAR COLLATE "pg_catalog"."default",
+	"scholarship_amount_payable" NUMERIC,
+	"scholarship_amount_paid" NUMERIC,
+	"centralshare_scholarship_amount_payable" NUMERIC,
+	"demo_auth" VARCHAR COLLATE "pg_catalog"."default",
+	"aadhaar_seeding_status" VARCHAR COLLATE "pg_catalog"."default",
+	"caste" VARCHAR COLLATE "pg_catalog"."default",
+	"db_valid_status" VARCHAR COLLATE "pg_catalog"."default",
+	"db_err_record_id" int4,
+	"applicant_address" VARCHAR COLLATE "pg_catalog"."default",
+	"applicant_city_name" VARCHAR COLLATE "pg_catalog"."default",
+	"applicant_address_pincode" int4,
+	"applicant_email_id" VARCHAR COLLATE "pg_catalog"."default",
+	"is_orphan" CHAR COLLATE "pg_catalog"."default",
+	"hoi_name" VARCHAR COLLATE "pg_catalog"."default",
+	"hoi_designation" VARCHAR COLLATE "pg_catalog"."default",
+	"hoi_mobile_number" VARCHAR COLLATE "pg_catalog"."default",
+	"hoi_email_id" VARCHAR COLLATE "pg_catalog"."default",
+	"institute_nodal_officer_name" VARCHAR COLLATE "pg_catalog"."default",
+	"institute_nodal_officer_designation" VARCHAR COLLATE "pg_catalog"."default",
+	"institute_nodal_officer_mobile_number" VARCHAR COLLATE "pg_catalog"."default",
+	"institute_nodal_officer_email_id" VARCHAR COLLATE "pg_catalog"."default",
+	"institution_type" VARCHAR COLLATE "pg_catalog"."default",
+	"address_of_institute" VARCHAR COLLATE "pg_catalog"."default",
+	"block_lgd_code_of_institute" int4,
+	"pin_code_of_institute" int4,
+	"course_total_duration" int4,
+	"attendance_method" VARCHAR COLLATE "pg_catalog"."default",
+	"previous_course_completed" VARCHAR COLLATE "pg_catalog"."default",
+	"previous_course_passing_percentage" int4,
+	"last_year_result" CHAR COLLATE "pg_catalog"."default",
+	"geo_tagging_of_institute" CHAR COLLATE "pg_catalog"."default",
+	"aadhar_based_ekyc_of_ino" CHAR COLLATE "pg_catalog"."default",
+	"aadhar_based_ekyc_of_hoi" CHAR COLLATE "pg_catalog"."default",
+	"aadhar_based_ekyc_of_dno_or_sno" CHAR COLLATE "pg_catalog"."default",
+	"aadhar_based_ekyc" CHAR COLLATE "pg_catalog"."default",
+	"parents_legal_guardian_aadhar_number" VARCHAR COLLATE "pg_catalog"."default",
+	"aadhar_belongs_to" CHAR COLLATE "pg_catalog"."default",
+	"relationship_of_parents_guardians_validate" CHAR COLLATE "pg_catalog"."default",
+	"management_quota" CHAR ( 1 ) COLLATE "pg_catalog"."default",
+	"previous_course_passing_year" VARCHAR ( 10 ) COLLATE "pg_catalog"."default",
+	"dedup_check_status" VARCHAR ( 25 ) COLLATE "pg_catalog"."default",
+	"dedup_request_id" VARCHAR ( 255 ) COLLATE "pg_catalog"."default",
+	CONSTRAINT "ssr_pkey" PRIMARY KEY ( "state_application_id", "nsp_scheme_code", "state_lgd_code", "academic_year" ) 
+);
+	
+******************************New changes in db************************************
