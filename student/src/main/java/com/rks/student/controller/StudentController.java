@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class StusentController {
+public class StudentController {
 
 	@GetMapping
 	public String getStudents() {
@@ -24,5 +24,8 @@ public class StusentController {
 		return new ResponseEntity<>("Success", HttpStatus.OK);
 
 	}
+	
+	
+//	public ResponseEntity<T> 
 
 }

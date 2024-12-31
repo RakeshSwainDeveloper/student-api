@@ -1,4 +1,4 @@
-//package com.rks.student.studentrecord.entity.studata;
+package com.rks.student.studentrecord.entity.studata;
 //
 //import java.io.Serializable;
 //import java.math.BigDecimal;
