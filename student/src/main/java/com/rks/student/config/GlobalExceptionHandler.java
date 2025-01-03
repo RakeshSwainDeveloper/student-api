@@ -32,6 +32,7 @@ public class GlobalExceptionHandler {
 
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorDetails> handeleGlobalException(Exception ex) {
+		ex.printStackTrace();
 		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), "Unexpected Error Occurres!!");
 		return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
 	}

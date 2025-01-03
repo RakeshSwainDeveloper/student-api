@@ -51,10 +51,10 @@ public class UserEntity {
 	@Column(name = "created_time")
 	private Timestamp createTime;
 
-	@Column(name = "block_status")
+	@Column(name = "block_status",insertable = false)
 	private String blockStatus;
 
-	@Column(name = "block_time")
+	@Column(name = "block_time",insertable = false)
 	private Timestamp blockTime;
 
 }

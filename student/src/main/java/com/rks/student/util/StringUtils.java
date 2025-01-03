@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.StringTokenizer;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -286,6 +287,10 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 		} else {
 			return str;
 		}
+	}
+
+	public static String getUUID() {
+		return UUID.randomUUID().toString();
 	}
 
 }

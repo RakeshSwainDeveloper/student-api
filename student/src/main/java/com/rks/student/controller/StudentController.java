@@ -12,7 +12,7 @@ public class StudentController {
 
 	@GetMapping
 	public String getStudents() {
-		return "List of Students";
+		return "Hello User Welcome to My world";
 	}
 
 	@PostMapping("/student_register/{id}/{name}")
